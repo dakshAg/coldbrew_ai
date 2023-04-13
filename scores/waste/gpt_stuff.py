@@ -1,6 +1,6 @@
 import openai 
 import pandas as pd
-import scores.waste.secret as secret
+import secret as secret
 
 # Import data.csv and turn it into a list
 df = pd.read_csv('data.csv', header=None)
