@@ -1,3 +1,3 @@
 def OPENAI_API():
     # Import the OpenAI API key from secret.py
-    return "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"
+    return "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"
