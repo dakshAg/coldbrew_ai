@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Ignore secret
-secret.py
+# Ignore all secret in all subdirectories
+**/secret.py
