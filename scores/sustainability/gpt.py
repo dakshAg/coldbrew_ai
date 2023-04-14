@@ -6,7 +6,7 @@ def get_response(text_prompt):
     import openai 
     # Import secret.py from the parent directory
     import sys
-    import secret
+    from . import secret
     # Set up OpenAI API credentials# Set up OpenAI API credentials
     openai.api_key = secret.OPENAI_API()
     
