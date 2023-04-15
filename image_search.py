@@ -1,4 +1,5 @@
 from selenium import webdriver
+import chromedriver_binary
 from selenium.webdriver.common.by import By
 
 def image_search(image_path):
