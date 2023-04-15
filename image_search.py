@@ -16,7 +16,7 @@ def image_search(image_path):
     #new Chrome webdriver instance
     driver = webdriver.Chrome(webdriver_path)
     driver.get("https://www.google.com/imghp")
-
+    driver.maximize_window()    
     # find the "Search by image" icon and click it
     search_by_image_icon = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[3]/div[3]")
     search_by_image_icon.click()
