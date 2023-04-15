@@ -13,7 +13,7 @@ def get_response(temp, text_prompt):
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=text_prompt,
-        max_tokens=500,
+        max_tokens=1000,
         n=1,
         stop=None,
         temperature=temp,

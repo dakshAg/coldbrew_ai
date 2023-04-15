@@ -1,6 +1,6 @@
 from flask import Flask
-from scores.waste import waste_guide
-from scores.sustainability import sustainability_score
+import image_search
+import metrics
 from flask import request
 
 app = Flask(__name__)
@@ -8,24 +8,20 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    query = request.form['q']
+    """Not Much. Just Empty Placeholder Function"""
+    return "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+
+@app.route("/final_report", methods=['GET'])
+def final_report():
+    """Takes in the user selected product name, and returns the Carbon Footprint and Water Footprint"""
+    query = request.args.get('p', '')
     city_url = "https://www.melbourne.vic.gov.au/residents/waste-recycling/Pages/a-z-waste-disposal.aspx"
-    return waste_guide.ai_disposal(query, city_url)
+    return metrics.final_report(query, city_url)
 
 
-@app.route("/ai_disposal", methods=['GET'])
-def ai_disposal():
-    query = request.args.get('q', '')
-    city_url = "https://www.melbourne.vic.gov.au/residents/waste-recycling/Pages/a-z-waste-disposal.aspx"
-    return waste_guide.ai_disposal(query, city_url)
-
-
-@app.route("/ai_sustainability_score", methods=['GET'])
-def ai_sustainability_score():
-    query = request.args.get('q', '')
-    x, scores, result = sustainability_score.ai_sustainability_score(query)
-    return {
-        "response": x,
-        "scores": scores,
-        "final_score": result
-    }
+@app.route("/image_search", methods=['GET'])
+def image_search():
+    """Takes in the url of user clicked image, and returns a list of 5 similar items, to look up further data for"""
+    query = request.args.get('url', '')
+    return image_search.image_search(query)
