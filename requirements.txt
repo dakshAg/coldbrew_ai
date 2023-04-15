@@ -3,3 +3,4 @@ flask
 selenium
 gunicorn
 chromedriver-binary-auto
+python-dotenv

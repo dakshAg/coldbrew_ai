@@ -1,4 +1,7 @@
 # This script will set up the OpenAI API and get the response from gpt 3
+import os
+
+
 def get_response(temp, text_prompt):
     """This function will take a temperature and prompt and return the response from gpt 3
 
@@ -10,11 +13,13 @@ def get_response(temp, text_prompt):
         str: The response string from gpt 3.
     """
     # Dependencies
-    import openai 
+    import openai
+    from dotenv import load_dotenv
     import secret
     # Set up OpenAI API credentials
-    openai.api_key = secret.OPENAI_API()
-    
+    load_dotenv()
+    openai.api_key = os.getenv("OPEN_AI_KEY")
+
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=text_prompt,
@@ -23,6 +28,6 @@ def get_response(temp, text_prompt):
         stop=None,
         temperature=temp,
     )
-    result  = response.choices[0].text
+    result = response.choices[0].text
     # Print the generated response
     return result
