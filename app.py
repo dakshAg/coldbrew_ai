@@ -29,7 +29,7 @@ def final_report():
 
 
 @app.route("/image_search", methods=['GET'])
-def image_search():
+def img_search():
     """Takes in the string url of user clicked image, and returns a list of 5 similar items, to look up further data for
 
     Returns:
