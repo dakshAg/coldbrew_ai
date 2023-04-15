@@ -5,49 +5,30 @@
 # We will start by importing relevant packages and sample dataset
 import pandas as pd
 import numpy as np
-import openai
+from . import gpt
+import re
 
-# The data we will be looking for contains product and manufacturer information and country of origin.
-data = pd.read_csv("data.csv")
+
+def extract_numbers(string):
+    # Remove all non-numeric characters from the string using a regular expression
+    string = re.sub(r'\D', '', string)
+
+    # Convert the resulting string of numbers to a list of integers
+    numbers = [int(digit) for digit in string]
+
+    return numbers
+
 
 # Using the data, we will create a function that will take in a product name and output a sustainability score
-def sustainability_score(carbon, water, recyclability, energy, sourcing):
-    # First we need to use the ingredients to establish a consensus about the following categories:
-        # Carbon footprint
-        # Water footprint
-        # Recyclability
-        # Energy efficiency
-        # Materials sourcing
-    # For now we will just sum the values of each category
-    return carbon + water + recyclability + energy + sourcing
+def ai_sustainability_score(prod_name):
+    # We need openai to classify the ingredients into categories that match the waste disposal guide
+    # We will use the openai api to do this
+    x = gpt.get_response(
+        "Please rate the sustainability of " + prod_name + " on a scale of 1 to 10, with 1 being not sustainable at all and 10 being extremely sustainable. Please take into consideration factors such as the materials used, the manufacturing process, the products lifespan, and its impact on the environment.")
+    # Extract the numbers from the response and return the average
+    # First we will delete everything that is not a number
+    scores = extract_numbers(x)
+    result = sum(scores) * 2
+    return x, scores, result
 
-def carbon_calc(data):
-    # This function will give a carbon footprint score based on the data
-    return 0
-
-def water_calc(data):
-    # This function will give a carbon footprint score based on the data
-    return 0
-
-def recyclability_calc(data):
-    # This function will give a carbon footprint score based on the data
-    return 0
-
-def energy_calc(data):
-    # This function will give a carbon footprint score based on the data
-    return 0
-
-def sourcing_calc(data):
-    # This function will give a carbon footprint score based on the data
-    return 0
-
-# Now we just need a main function that will run the sustainability score function and save the score to a json file.
-def main(data):
-    carbon = carbon_calc(data)
-    water = water_calc(data)
-    recyclability = recyclability_calc(data)
-    energy = energy_calc(data)
-    sourcing = sourcing_calc(data)
-    # Then we need to run the sustainability score function
-    score = sustainability_score(carbon, water, recyclability, energy, sourcing)
-    return score    
+# print(ai_sustainability_score("Coca Cola Bottle"))

@@ -27,7 +27,7 @@ def detect_labels(path):
                 response.error.message))
     
 def main():
-    file_path = 'coldbrew_ai/test_img_coke.png'
+    file_path = 'coldbrew_ai/detection/data/test_img_coke.png'
     detect_labels(file_path)
 
 if __name__ == '__main__':
