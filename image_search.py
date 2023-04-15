@@ -1,7 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-def image_search(image_path): #input: path of the image that a user uploaded
+def image_search(image_path):
+    """This function will take an image path and return the top 5 search results from google vision
+
+    Args:
+        image_path (str): The string of an image path.
+
+    Returns:
+        list: List of dictionaries comprised of name, image link and url.
+    """
     #path of webdriver executable
     webdriver_path = "/image_search"
 
