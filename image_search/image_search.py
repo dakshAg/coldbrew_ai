@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
 
 def image_search(image_path): #input: path of the image that a user uploaded
     #path of webdriver executable
@@ -41,6 +40,8 @@ def image_search(image_path): #input: path of the image that a user uploaded
         image_link = image_result.get_attribute("data-thumbnail-url")
         product_name = image_result.get_attribute("data-item-title")
         top5_search_results.append({"product": product_name, "image": image_link, "url": url})
+
+    return top5_search_results
 
     # print(top5_search_results)
 
