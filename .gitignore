@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # Ignore all secret in all subdirectories
-**/secret.py
+# **/secret.py
 
 # Ignore all rough work
 **/rough.py
