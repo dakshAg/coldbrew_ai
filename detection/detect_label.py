@@ -1,7 +1,7 @@
 from google.cloud import vision
 import io
 import os 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'coldbrew_ai/visionAPI.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'COLDBREW_AI/detection/data/visionAPI.json'
 
 def detect_labels(path):
     """Detects labels in the file."""
