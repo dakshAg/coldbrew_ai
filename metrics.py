@@ -2,6 +2,7 @@
 import gpt
 import re
 
+
 # def extract_numbers(string):
 #     """This takes a string and extracts the numbers from it
 
@@ -43,8 +44,8 @@ def ai_cf_wf(prod_name):
     Returns:
         str: The response for carbon footprint and water footprint
     """
-    cf_prompt = "Instruction 1: Approximate carbon footprint of this product (in kgCO2e): Coca-Cola Classic Soft Drink Can 375mL or similar product.\nResponse 1: 0.17 kgCO2e\n\nInstruction 2: Approximate carbon footprint of this product (in kgCO2e): " +  prod_name + " or similar product.\nResponse 2: [fill the blank]."
-    wf_prompt = "Instruction 1: Approximate water footprint of this product (in L): Coca-Cola Classic Soft Drink Can 375mL or similar product.\nResponse 1: 170 L\n\nInstruction 2: Approximate water footprint of this product (in L): " +  prod_name + " or similar product.\nResponse 2: [fill the blank]."
+    cf_prompt = "Instruction 1: Approximate carbon footprint of this product (in kgCO2e): Coca-Cola Classic Soft Drink Can 375mL or similar product.\nResponse 1: 0.17 kgCO2e\n\nInstruction 2: Approximate carbon footprint of this product (in kgCO2e): " + prod_name + " or similar product.\nResponse 2: [fill the blank]."
+    wf_prompt = "Instruction 1: Approximate water footprint of this product (in L): Coca-Cola Classic Soft Drink Can 375mL or similar product.\nResponse 1: 170 L\n\nInstruction 2: Approximate water footprint of this product (in L): " + prod_name + " or similar product.\nResponse 2: [fill the blank]."
     response_carbon = gpt.get_response(0.2, cf_prompt)
     response_water = gpt.get_response(0.2, wf_prompt)
 
@@ -65,4 +66,7 @@ def final_report(prod_name, url):
     Returns:
         str: The response from gpt3 for waste disposal and the carbon and water footprint
     """
-    return ai_disposal(prod_name, url), ai_cf_wf(prod_name)
+    return {
+        'disposal': ai_disposal(prod_name, url),
+        'cf_wf': ai_cf_wf(prod_name)
+    }
