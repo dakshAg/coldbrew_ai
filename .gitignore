@@ -130,3 +130,6 @@ dmypy.json
 
 # Ignore all secret in all subdirectories
 **/secret.py
+
+# Ignore all rough work
+**/rough.py
