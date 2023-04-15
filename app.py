@@ -8,13 +8,21 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    """Not Much. Just Empty Placeholder Function"""
+    """This is just a placeholder function
+
+    Returns:
+        None: nothing for now.
+    """
     return "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 
 @app.route("/final_report", methods=['GET'])
 def final_report():
-    """Takes in the user selected product name, and returns the Carbon Footprint and Water Footprint"""
+    """Takes in the string of user selected product name, and returns the Carbon Footprint and Water Footprint
+
+    Returns:
+        str: Strings of the carbon and water footprint.
+    """
     query = request.args.get('p', '')
     city_url = "https://www.melbourne.vic.gov.au/residents/waste-recycling/Pages/a-z-waste-disposal.aspx"
     return metrics.final_report(query, city_url)
@@ -22,6 +30,10 @@ def final_report():
 
 @app.route("/image_search", methods=['GET'])
 def image_search():
-    """Takes in the url of user clicked image, and returns a list of 5 similar items, to look up further data for"""
+    """Takes in the string url of user clicked image, and returns a list of 5 similar items, to look up further data for
+
+    Returns:
+        list: list of dictionaries comprised of name, image link and url.
+    """
     query = request.args.get('url', '')
     return image_search.image_search(query)
