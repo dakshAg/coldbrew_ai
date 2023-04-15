@@ -42,12 +42,3 @@ def image_search(image_path): #input: path of the image that a user uploaded
         top5_search_results.append({"product": product_name, "image": image_link, "url": url})
 
     return top5_search_results
-
-    # print(top5_search_results)
-
-# def main():
-#     image_path = 'https://media.istockphoto.com/id/822600622/photo/green-metal-water-flask-isolated-on-a-white-background-with-path.jpg?s=612x612&w=is&k=20&c=80W7L51tp0Y77-e-z_KIGlieGgePYakebkgABvr9IfU='
-#     image_search(image_path)
-
-# if __name__ == '__main__':
-#     main()
