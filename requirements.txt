@@ -2,3 +2,4 @@ openai
 flask
 selenium
 gunicorn
+chromedriver-binary-auto
