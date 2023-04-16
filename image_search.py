@@ -1,10 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver import Chrome 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service 
-from webdriver_manager.chrome import ChromeDriverManager
-
-
 
 def image_search(image_path):
     """This function will take an image path and return the top 5 search results from google vision
