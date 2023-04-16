@@ -69,8 +69,8 @@ def image_search(image_path):
         product_name = image_result.get_attribute("data-item-title")
         top5_search_results.append({"product": product_name, "image": image_link, "url": url})
 
-    print(top5_search_results)
+    # print(top5_search_results)
     return top5_search_results
 
-image_path = 'https://cdn0.woolworths.media/content/wowproductimages/medium/038121.jpg'
-image_search(image_path)
+# image_path = 'https://cdn0.woolworths.media/content/wowproductimages/medium/038121.jpg'
+# image_search(image_path)
