@@ -4,6 +4,8 @@ import metrics
 from flask import request
 
 app = Flask(__name__)
+if __name__ == "__main__":
+    app.run(host="192.168.2.18", port=5000)
 
 
 @app.route("/")
