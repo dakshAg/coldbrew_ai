@@ -1,5 +1,10 @@
 from selenium import webdriver
+from selenium.webdriver import Chrome 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service 
+from webdriver_manager.chrome import ChromeDriverManager
+
+
 
 def image_search(image_path):
     """This function will take an image path and return the top 5 search results from google vision
@@ -10,11 +15,25 @@ def image_search(image_path):
     Returns:
         list: List of dictionaries comprised of name, image link and url.
     """
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.page_load_strategy = 'none'
+    # chrome_path = ChromeDriverManager().install() 
+    # chrome_service = Service(chrome_path) 
+    # driver = Chrome(options=options, service=chrome_service)
+    driver = Chrome(options=options)
+
+    driver.implicitly_wait(5)
+    # driver = webdriver.Chrome(chrome_path)
+    # driver.implicitly_wait(5)
+
     #path of webdriver executable
-    webdriver_path = "/image_search"
+    # webdriver_path = "/image_search"
 
     #new Chrome webdriver instance
-    driver = webdriver.Chrome(webdriver_path)
+    # driver = webdriver.Chrome(webdriver_path)
+
     driver.get("https://www.google.com/imghp")
     driver.maximize_window()  
       
@@ -50,4 +69,8 @@ def image_search(image_path):
         product_name = image_result.get_attribute("data-item-title")
         top5_search_results.append({"product": product_name, "image": image_link, "url": url})
 
+    # print(top5_search_results)
     return top5_search_results
+
+# image_path = 'https://cdn0.woolworths.media/content/wowproductimages/medium/038121.jpg'
+# image_search(image_path)
